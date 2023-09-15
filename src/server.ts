@@ -14,15 +14,15 @@ app.get('/users', async () => {
 
 app.post('/users', async (request, reply) => {
     const createUserSchema = z.object({
-        name: z.string(),
+        nome: z.string(),
         email: z.string().email(),
     })
 
-    const { name, email } = createUserSchema.parse(request.body)
+    const { nome, email } = createUserSchema.parse(request.body)
 
     await prisma.user.create({
         data: {
-            name,
+            nome,
             email,
         }
     })
